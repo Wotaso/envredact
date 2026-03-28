@@ -1,0 +1,145 @@
+:root {
+  --bg: #f4f7f8;
+  --surface: #ffffff;
+  --border: #dbe4e7;
+  --text: #122026;
+  --muted: #5a6c74;
+  --accent: #0f766e;
+  --accent-hover: #0c5f59;
+  --radius: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "IBM Plex Sans", "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(180deg, #f4f7f8 0%, #e8f0f2 100%);
+  color: var(--text);
+}
+
+.container {
+  width: min(1100px, 100% - 2rem);
+  margin: 2rem auto;
+  display: grid;
+  gap: 1rem;
+}
+
+header h1 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.5rem, 2vw + 1rem, 2.1rem);
+}
+
+header p {
+  margin: 0;
+  color: var(--muted);
+  max-width: 80ch;
+  line-height: 1.5;
+}
+
+.meta {
+  margin-top: 0.55rem;
+}
+
+.grid-two {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.9rem;
+}
+
+.panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+label {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+textarea {
+  width: 100%;
+  min-height: 320px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.8rem;
+  resize: vertical;
+  font: 0.92rem/1.45 "JetBrains Mono", "Fira Code", Consolas, monospace;
+  background: #fbfdfe;
+  color: var(--text);
+}
+
+.bottom-panel textarea {
+  min-height: 100px;
+}
+
+button {
+  border: 0;
+  border-radius: 8px;
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+  padding: 0.5rem 0.8rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--accent-hover);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+.hint {
+  margin: 0.6rem 0 0;
+  color: var(--muted);
+  line-height: 1.4;
+  font-size: 0.92rem;
+}
+
+code {
+  font-family: "JetBrains Mono", "Fira Code", Consolas, monospace;
+}
+
+a {
+  color: var(--accent);
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.2rem 0.1rem 0;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 900px) {
+  .grid-two {
+    grid-template-columns: 1fr;
+  }
+
+  textarea {
+    min-height: 240px;
+  }
+
+  .footer {
+    justify-content: flex-start;
+  }
+}

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ENV Redactor</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>ENV Redactor</h1>
+        <p>
+          This tool redacts sensitive values from <code>.env</code> files so you
+          can safely share configuration snippets with coding agents, LLMs, or
+          support tickets.
+        </p>
+        <p class="meta">
+          Open source on
+          <a href="https://github.com/Wotaso/envredact" target="_blank" rel="noopener noreferrer">
+            github.com/Wotaso/envredact
+          </a>.
+          100% local in your browser: no upload, no backend, no server-side
+          processing.
+        </p>
+      </header>
+
+      <section class="grid-two">
+        <article class="panel">
+          <label for="envInput">.env Input</label>
+          <textarea
+            id="envInput"
+            spellcheck="false"
+            placeholder="DB_URL=postgres://...\nAPI_TOKEN=abc123\nPUBLIC_BASE_URL=https://example.com"
+          ></textarea>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <label for="envOutput">Redacted Output</label>
+            <button id="copyBtn" type="button">Copy</button>
+          </div>
+          <textarea id="envOutput" spellcheck="false" readonly></textarea>
+        </article>
+      </section>
+
+      <section class="panel bottom-panel">
+        <label for="keywordsInput">Sensitive Variable Keywords</label>
+        <textarea
+          id="keywordsInput"
+          spellcheck="false"
+          aria-describedby="keywordsHelp"
+          placeholder="key, token, secret"
+        ></textarea>
+        <p id="keywordsHelp" class="hint">
+          If a variable name contains one of these keywords (for example
+          <code>API_TOKEN</code>), the value is replaced with
+          <code>&lt;redacted&gt;</code>.
+        </p>
+      </section>
+
+      <footer class="footer">
+        <a href="https://wotaso.com/imprint" target="_blank" rel="noopener noreferrer">Imprint</a>
+      </footer>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
