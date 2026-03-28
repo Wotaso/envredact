@@ -4,6 +4,7 @@ const DEFAULT_KEYWORDS = [
   "secret",
   "private",
   "password",
+  "pass",
   "passwd",
   "pwd",
   "auth",
