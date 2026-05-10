@@ -86,6 +86,27 @@ textarea {
   min-height: 100px;
 }
 
+.notice-panel h2,
+.legal-content h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+
+.notice-panel p,
+.legal-content p {
+  margin: 0 0 1rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.legal-page {
+  max-width: 850px;
+}
+
+.legal-content p:last-child {
+  margin-bottom: 0;
+}
+
 button {
   border: 0;
   border-radius: 8px;
@@ -125,6 +146,8 @@ a:hover {
 
 .footer {
   display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
   justify-content: flex-end;
   padding: 0.2rem 0.1rem 0;
   font-size: 0.95rem;

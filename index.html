@@ -3,25 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ENV Redactor</title>
+    <title>EnvRedact</title>
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <main class="container">
       <header>
-        <h1>ENV Redactor</h1>
+        <h1>EnvRedact</h1>
         <p>
-          This tool redacts sensitive values from <code>.env</code> files so you
-          can safely share configuration snippets with coding agents, LLMs, or
-          support tickets.
+          This tool helps redact values from <code>.env</code> files before you
+          share configuration snippets with coding agents, LLMs, or support
+          tickets.
         </p>
         <p class="meta">
           Open source on
           <a href="https://github.com/Wotaso/envredact" target="_blank" rel="noopener noreferrer">
             github.com/Wotaso/envredact
           </a>.
-          100% local in your browser: no upload, no backend, no server-side
-          processing.
+          Your pasted <code>.env</code> content is processed in this page in your
+          browser. This project has no backend for <code>.env</code> content and
+          does not upload your input or output.
         </p>
       </header>
 
@@ -59,8 +60,20 @@
         </p>
       </section>
 
+      <section class="panel notice-panel" aria-labelledby="securityNoticeTitle">
+        <h2 id="securityNoticeTitle">Security notice</h2>
+        <p>
+          Redaction is based on variable names and the keyword list above. It is
+          a best-effort helper, not a guarantee that every secret is detected.
+          Review the output before sharing it and rotate any credentials that
+          were shared by mistake.
+        </p>
+      </section>
+
       <footer class="footer">
-        <a href="https://wotaso.com/imprint" target="_blank" rel="noopener noreferrer">Imprint</a>
+        <a href="./imprint.html">Imprint</a>
+        <a href="./privacy.html">Privacy</a>
+        <a href="https://github.com/Wotaso/envredact" target="_blank" rel="noopener noreferrer">GitHub</a>
       </footer>
     </main>
 

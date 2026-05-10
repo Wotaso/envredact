@@ -2,9 +2,13 @@
   "name": "envredact",
   "version": "1.0.0",
   "private": true,
+  "license": "MIT",
   "description": "Static frontend for redacting sensitive .env variables locally in the browser.",
   "scripts": {
     "start": "http-server . -p ${PORT:-3000} -c-1"
+  },
+  "overrides": {
+    "follow-redirects": "^1.16.0"
   },
   "dependencies": {
     "http-server": "^14.1.1"

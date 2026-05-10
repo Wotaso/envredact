@@ -66,17 +66,20 @@ function splitValueAndComment(rawValue) {
 }
 
 function replaceValue(value) {
+  const leadingWhitespace = value.match(/^\s*/)[0];
+  const trailingWhitespace = value.match(/\s*$/)[0];
   const trimmed = value.trim();
+  let redactedValue;
 
   if (trimmed.startsWith('"') && trimmed.endsWith('"')) {
-    return '"<redacted>"';
+    redactedValue = '"<redacted>"';
+  } else if (trimmed.startsWith("'") && trimmed.endsWith("'")) {
+    redactedValue = "'<redacted>'";
+  } else {
+    redactedValue = "<redacted>";
   }
 
-  if (trimmed.startsWith("'") && trimmed.endsWith("'")) {
-    return "'<redacted>'";
-  }
-
-  return "<redacted>";
+  return `${leadingWhitespace}${redactedValue}${trailingWhitespace}`;
 }
 
 function redactEnvContent(content, keywords) {
@@ -90,12 +93,12 @@ function redactEnvContent(content, keywords) {
         return line;
       }
 
-      const match = line.match(/^(\s*)(?:export\s+)?([A-Za-z_][A-Za-z0-9_]*)(\s*=\s*)(.*)$/);
+      const match = line.match(/^(\s*)(export\s+)?([A-Za-z_][A-Za-z0-9_]*)(\s*=\s*)(.*)$/);
       if (!match) {
         return line;
       }
 
-      const [, indent, rawName, separator, rawValue] = match;
+      const [, indent, exportPrefix = "", rawName, separator, rawValue] = match;
       const varName = rawName.toLowerCase();
       const shouldRedact = keywords.some((keyword) => varName.includes(keyword));
 
@@ -105,7 +108,7 @@ function redactEnvContent(content, keywords) {
 
       const { value, comment } = splitValueAndComment(rawValue);
       const maskedValue = replaceValue(value);
-      return `${indent}${rawName}${separator}${maskedValue}${comment}`;
+      return `${indent}${exportPrefix}${rawName}${separator}${maskedValue}${comment}`;
     })
     .join("\n");
 }
