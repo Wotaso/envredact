@@ -107,6 +107,10 @@ function redactEnvContent(content, keywords) {
       }
 
       const { value, comment } = splitValueAndComment(rawValue);
+      if (!value.trim()) {
+        return line;
+      }
+
       const maskedValue = replaceValue(value);
       return `${indent}${exportPrefix}${rawName}${separator}${maskedValue}${comment}`;
     })
